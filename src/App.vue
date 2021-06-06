@@ -1,22 +1,20 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home |</router-link>
-      <router-link v-if="!authenticated" to="/about"> About |</router-link>
-      <router-link v-if="authenticated && this.$route.path !== '/profile'" to="/profile"> Profile |</router-link>
-      <router-link v-if="!authenticated" to="/login"> Login</router-link>
-      <router-link v-if="authenticated" to="/login" v-on:click.native="logout()" replace> Logout</router-link>
 
-      <router-link to="/pagePro"> | Lien vers profil Angélique</router-link>
     </div>
-
+<Navbar @logout="logout" :authenticated="authenticated"></Navbar>
     <router-view @authenticated="setAuthenticated"/>
   </div>
 </template>
 
 <script>
+import Navbar from "./views/Navbar";
 export default {
   name: 'App',
+  components: {
+    Navbar
+  },
   data() {
     return {
       authenticated: false,
@@ -51,9 +49,9 @@ export default {
   color: #2c3e50;
 }
 
-#nav {
-  padding: 30px;
-}
+/*#nav {*/
+/*  padding: 30px;*/
+/*}*/
 
 #nav a {
   font-weight: bold;
