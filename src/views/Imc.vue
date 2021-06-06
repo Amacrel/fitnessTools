@@ -21,22 +21,22 @@
     <br><br>
     <div  v-if="result === 'Insuffisance pondérale (maigreur)'">
       <h3 :class="resultClass">Insuffisance pondérale (maigreur)</h3>
-      <button @click="moreDetails()">Plus de détails...</button>
+      <button @click="moreDetails()" v-if="details === false">Plus de détails...</button>
       <Details v-if="details === true" :result="result" @like="Like"></Details>
     </div>
     <div v-if="result === 'Poids normal'">
       <h3 :class="resultClass" >Poids normal</h3>
-      <button @click="moreDetails()">Plus de détails...</button>
+      <button @click="moreDetails()" v-if="details === false">Plus de détails...</button>
       <Details v-if="details === true" :result="result" @like="Like"></Details>
     </div>
     <div v-if="result === 'Surpoids'">
       <h3 :class="resultClass">Surpoids</h3>
-      <button @click="moreDetails()">Plus de détails...</button>
+      <button @click="moreDetails()" v-if="details === false">Plus de détails...</button>
       <Details v-if="details === true" :result="result" @like="Like"></Details>
     </div>
     <div v-if="result === 'Obésité'">
       <h3 :class="resultClass">Obésité</h3>
-      <button @click="moreDetails()">Plus de détails...</button>
+      <button @click="moreDetails()" v-if="details === false">Plus de détails...</button>
       <Details v-if="details === true" :result="result" @like="Like"></Details>
     </div>
   </div>

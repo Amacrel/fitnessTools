@@ -1,14 +1,46 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> |
-      <router-link to="/imc">Calculez votre IMC</router-link> |
-      <router-link to="/metabolismebase"> Calculez votre Métabolisme de base</router-link>
+      <router-link to="/">Home |</router-link>
+      <router-link v-if="!authenticated" to="/about"> About |</router-link>
+      <router-link v-if="authenticated && this.$route.path !== '/profile'" to="/profile"> Profile |</router-link>
+      <router-link v-if="!authenticated" to="/login"> Login</router-link>
+      <router-link v-if="authenticated" to="/login" v-on:click.native="logout()" replace> Logout</router-link>
+
+      <router-link to="/pagePro"> | Lien vers profil Angélique</router-link>
     </div>
-    <router-view/>
+
+    <router-view @authenticated="setAuthenticated"/>
   </div>
 </template>
+
+<script>
+export default {
+  name: 'App',
+  data() {
+    return {
+      authenticated: false,
+      mockAccount: {
+        username: "Amacrel",
+        password: "12345678"
+      }
+    }
+  },
+  mounted() {
+    if (!this.authenticated) {
+      this.$router.replace({name: "Login"});
+    }
+  },
+  methods: {
+    setAuthenticated(status) {
+      this.authenticated = status;
+    },
+    logout() {
+      this.authenticated = false;
+    }
+  }
+}
+</script>
 
 <style>
 #app {

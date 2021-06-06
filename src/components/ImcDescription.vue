@@ -27,6 +27,7 @@
   </div>
 
   <button @click="$emit('like')">J'aime</button>
+  <br><br>
   <div>
     <router-link :to="Home">Retour à la page d'accueil</router-link>
   </div>

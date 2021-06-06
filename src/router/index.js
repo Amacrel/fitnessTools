@@ -4,6 +4,9 @@ import Home from '../views/Home.vue'
 import Imc from "../views/Imc"
 import MetabolismeBase from "../views/MetabolismeBase"
 import MethodeMifflinStJeor from "../views/MethodeMifflinStJeor";
+import Login from "../views/Login";
+import Profile from "../views/Profile";
+import PagePro from "../views/PagePro";
 
 Vue.use(VueRouter)
 
@@ -35,6 +38,21 @@ const routes = [
     path: '/metabolismebase/mifflinStJeor',
     name: 'MifflinStJeor',
     component: MethodeMifflinStJeor
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login
+  },
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: Profile
+  },
+  {
+    path: '/pagepro',
+    name: 'PagePro',
+    component: PagePro
   }
 ]
 
